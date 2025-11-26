@@ -36,6 +36,10 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 		graduate.GET("", controllers.QueryGraduateEmployment)
 	}
 
+	schoolemployment := v1.Group("/degree-employment")
+	{
+		schoolemployment.GET("", controllers.QueryUniDegreeEmployment)
+	}
 	// 可在此继续添加其他资源路由
 
 	return r

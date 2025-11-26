@@ -24,3 +24,18 @@ func (m *graduateEmploymentManager) QueryByUniversityAndYear(university string, 
 	}
 	return results, nil
 }
+
+func (m *graduateEmploymentManager) QueryByUniversityAndDegree(university string, degree string) ([]models.GraduateDegreeEmploymentResponse, error) {
+	var results []models.GraduateDegreeEmploymentResponse
+
+	err := m.db.Session(&gorm.Session{AllowGlobalUpdate: true}).
+		Table("survey").
+		Where("university = ? AND degree = ?", university, degree).
+		Select("year", "employment_rate_overall").
+		Scan(&results).Error
+
+	if err != nil {
+		return nil, err
+	}
+	return results, nil
+}
