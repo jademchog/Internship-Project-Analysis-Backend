@@ -29,6 +29,6 @@ type GraduateEmploymentResponse struct {
 }
 
 type GraduateDegreeEmploymentResponse struct {
-	Year                  string `json:"school"`
+	Year                  string `json:"year"`
 	EmploymentRateOverall string `json:"employment_rate_overall"`
 }
